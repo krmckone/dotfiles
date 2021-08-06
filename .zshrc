@@ -79,6 +79,9 @@ plugins=(
   git
   osx
   golang
+  ipfs
+  vi-mode
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,3 +124,13 @@ export PATH=$PATH:/Users/krmckone/.local/bin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS="--height=40% --preview='cat {}' --preview-window=right:60%:wrap"
+
+alias ls='ls -l'
+
+# Flutter dev
+export PATH="$PATH:/Users/krmckone/flutter/flutter/bin"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
