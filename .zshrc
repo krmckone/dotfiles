@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='vim'
+   export EDITOR='lvim'
  fi
 
 # Compilation flags
@@ -115,22 +115,33 @@ if [[ -n $SSH_CONNECTION ]]; then
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export GOPATH=/Users/krmckone/Go
-
-export PATH=$GOPATH/bin:$PATH
-
-export PATH=$PATH:/Users/krmckone/.local/bin
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS="--height=40% --preview='cat {}' --preview-window=right:60%:wrap"
 
 alias ls='ls -l'
 
-# Flutter dev
-export PATH="$PATH:/Users/krmckone/flutter/flutter/bin"
-
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+###########################################################
+########## OMZ DONE. BEGIN PERSONAL ADDITIONS #############
+###########################################################
+
+# init zoxide (smart replacement for cd)
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# Load my helpers (https://github.com/krmckone/krm-helpers)
+if [ ! -d "~/.krm_helpers" ]
+then
+  echo ""
+  echo "krm_helpers doesn't exist, grabbing from GitHub"
+  echo ""
+  cd ~
+  git clone git@github.com:krmckone/krm-helpers.git
+fi
+for file in ~/.krm_helpers/*; do
+  source "$file"
+done
