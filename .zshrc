@@ -133,11 +133,17 @@ alias ls='ls -l'
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# Load my helpers (https://github.com/krmckone/krm-helpers)
-if [ ! -d "~/.krm-helpers" ]
+# Eagerly get and update my helpers
+HELPERS_DIR="$HOME/.krm-helpers"
+if [ ! -d $HELPERS_DIR ]
 then
-  git clone git@github.com:krmckone/krm-helpers.git ~/.krm-helpers
+  git clone git@github.com:krmckone/krm-helpers.git $HOME/.krm-helpers --quiet
 fi
-for file in ~/.krm-helpers/*; do
+git -C $HELPERS_DIR checkout main --quiet && git -C $HELPERS_DIR fetch --quiet
+if git -C $HELPERS_DIR status -uno | grep "Your branch is behind 'origin/main'" --quiet
+then
+  git -C $HELPERS_DIR pull --quiet
+fi
+for file in $HOME/.krm-helpers/*; do
   source "$file"
 done
