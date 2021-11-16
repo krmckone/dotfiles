@@ -136,12 +136,8 @@ alias cd="z"
 # Load my helpers (https://github.com/krmckone/krm-helpers)
 if [ ! -d "~/.krm-helpers" ]
 then
-  echo ""
-  echo "krm_helpers doesn't exist, grabbing from GitHub"
-  echo ""
-  cd ~
-  git clone git@github.com:krmckone/krm-helpers.git
+  git clone git@github.com:krmckone/krm-helpers.git ~/.krm-helpers
 fi
-for file in ~/.krm_helpers/*; do
+for file in ~/.krm-helpers/*; do
   source "$file"
 done
