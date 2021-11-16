@@ -140,7 +140,7 @@ then
   git clone git@github.com:krmckone/krm-helpers.git $HOME/.krm-helpers --quiet
 fi
 git -C $HELPERS_DIR checkout main --quiet && git -C $HELPERS_DIR fetch --quiet
-if git -C $HELPERS_DIR status -uno --quiet | grep "Your branch is behind 'origin/main'"
+if git -C $HELPERS_DIR status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
 then
   git -C $HELPERS_DIR pull --quiet
 fi
