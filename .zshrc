@@ -134,7 +134,7 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # Load my helpers (https://github.com/krmckone/krm-helpers)
-if [ ! -d "~/.krm_helpers" ]
+if [ ! -d "~/.krm-helpers" ]
 then
   echo ""
   echo "krm_helpers doesn't exist, grabbing from GitHub"
