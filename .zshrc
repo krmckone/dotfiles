@@ -144,6 +144,6 @@ if git -C $HELPERS_DIR status -uno | grep "Your branch is behind 'origin/main'" 
 then
   git -C $HELPERS_DIR pull --quiet
 fi
-for file in $HOME/.krm-helpers/*; do
+for file in $HELPERS_DIR/*; do
   source "$file"
 done
