@@ -137,7 +137,7 @@ alias cd="z"
 HELPERS_DIR="$HOME/.krm-helpers"
 if [ ! -d $HELPERS_DIR ]
 then
-  git clone git@github.com:krmckone/krm-helpers.git $HOME/.krm-helpers --quiet
+  git clone git@github.com:krmckone/krm-helpers.git $HELPERS_DIR --quiet
 fi
 git -C $HELPERS_DIR checkout main --quiet && git -C $HELPERS_DIR fetch --quiet
 if git -C $HELPERS_DIR status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
