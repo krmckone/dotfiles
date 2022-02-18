@@ -158,5 +158,5 @@ if git -C $NVIM_CONFIG_DIR status -uno | grep "Your branch is behind 'origin/mai
 then
   git -C $NVIM_CONFIG_DIR pull --quiet
 fi
-# Do my nvim config setup if it doesn't exist
-[ -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim 
+# Setup symbolic link to my nvim config repo if it doesn't exist
+[ ! -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim 
