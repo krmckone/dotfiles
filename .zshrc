@@ -147,3 +147,16 @@ fi
 for file in $HELPERS_DIR/*; do
   source "$file"
 done
+
+NVIM_CONFIG_DIR="$HOME/.nvim-config"
+if [ ! -d $NVIM_CONFIG_DIR ]
+then
+  git clone git@github.com:krmckone/nvim-config.git $NVIM_CONFIG_DIR --quiet
+fi
+git -C $NVIM_CONFIG_DIR checkout main --quiet && git -C $NVIM_CONFIG_DIR fetch --quiet
+if git -C $NVIM_CONFIG_DIR status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
+then
+  git -C $NVIM_CONFIG_DIR pull --quiet
+fi
+# Do my nvim config setup if it doesn't exist
+[ -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim 
