@@ -133,30 +133,51 @@ alias ls='ls -l'
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# Eagerly get and update my helpers
+### Allows us to interact with github over ssh without
+### having to provide ssh passcode every time
+SSH_ENV=$HOME/.ssh/environment
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
+    echo succeeded
+    chmod 600 ${SSH_ENV}
+    . ${SSH_ENV} > /dev/null
+    /usr/bin/ssh-add
+}
+if [ -f "${SSH_ENV}" ]; then
+     . ${SSH_ENV} > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+# setup_repo <repo_name, target_path>
+function setup_repo {
+  local github_base="git@github.com:krmckone"
+  readonly repo_name=${1:?"repo_name must be specified."}
+  readonly target_path=${2:?"target_path must be specified."}
+  if [ ! -d $target_path ]
+  then
+      git clone $github_base/$repo_name.git $target_path --quiet
+  fi
+  git -C $target_path checkout main --quiet && git -C $target_path fetch --quiet
+  if git -C $target_path status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
+  then
+    git -C $target_path pull --quiet
+  fi
+}
+
 HELPERS_DIR="$HOME/.krm-helpers"
-if [ ! -d $HELPERS_DIR ]
-then
-  git clone git@github.com:krmckone/krm-helpers.git $HELPERS_DIR --quiet
-fi
-git -C $HELPERS_DIR checkout main --quiet && git -C $HELPERS_DIR fetch --quiet
-if git -C $HELPERS_DIR status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
-then
-  git -C $HELPERS_DIR pull --quiet
-fi
+setup_repo "krm-helpers" $HELPERS_DIR
 for file in $HELPERS_DIR/*; do
   source "$file"
 done
 
 NVIM_CONFIG_DIR="$HOME/.nvim-config"
-if [ ! -d $NVIM_CONFIG_DIR ]
-then
-  git clone git@github.com:krmckone/nvim-config.git $NVIM_CONFIG_DIR --quiet
-fi
-git -C $NVIM_CONFIG_DIR checkout main --quiet && git -C $NVIM_CONFIG_DIR fetch --quiet
-if git -C $NVIM_CONFIG_DIR status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
-then
-  git -C $NVIM_CONFIG_DIR pull --quiet
-fi
+setup_repo "nvim-config" $NVIM_CONFIG_DIR
 # Setup symbolic link to my nvim config repo if it doesn't exist
-[ ! -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim 
+[ ! -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim
