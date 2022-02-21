@@ -16,10 +16,12 @@ elif [[ $platform == "Linux" ]]; then
   dirRoot="/home"
 fi
 if [[ -d "$dirRoot/krmckone" ]]; then
-  export ZSH="$dirRoot/krmckone/.oh-my-zsh"
+  username="krmckone"
 elif [[ -d "$dirRoot/kalebmckone" ]]; then
-  export ZSH="$dirRoot/kalebmckone/.oh-my-zsh"
+  username="kalebmckone"
 fi
+
+export ZSH="$dirRoot/$username/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
