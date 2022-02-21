@@ -8,26 +8,25 @@ function setup_repo {
       echo "$target_path does not exist. Cloning $repo_name"
       git clone $github_base/$repo_name.git $target_path
   fi
-  git -C $target_path checkout master --quiet && git -C $target_path fetch --quiet
-  if git -C $target_path status -uno | grep "Your branch is behind
-    'origin/master'" 1> /dev/null
+  git -C $target_path checkout main --quiet && git -C $target_path fetch --quiet
+  if git -C $target_path status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
   then
     git -C $target_path pull --quiet
   fi
 }
 
-DOTFILES_DIR="$HOME/.dotfiles"
+DOTFILES_REPO="$HOME/.dotfiles"
 
-setup_repo "dotfiles" $DOTFILES_DIR
+setup_repo "dotfiles" $DOTFILES_REPO
 
 dotFiles=(
-  "gitconfig"
   "vimrc"
   "zshrc"
   "tmux.conf"
+  "gitconfig"
 )
 
-[ ! -d ~/.zshrc ] && ln -s $DOTFILES_DIR/.zshrc ~/.zshrc
-[ ! -d ~/.vimrc ] && ln -s $DOTFILES_DIR/.vimrc ~/.vimrc
-[ ! -d ~/.tmux.conf ] && ln -s $DOTFILES_DIR/.tmux.conf ~/.tmux.conf
-
+for dotFile in ${dotFiles[@]}
+do
+  ln -sf $DOTFILES_REPO/.$dotFile $HOME/.$dotFile
+done
