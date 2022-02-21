@@ -191,3 +191,9 @@ NVIM_CONFIG_DIR="$HOME/.nvim-config"
 setup_repo "nvim-config" $NVIM_CONFIG_DIR
 # Setup symbolic link to my nvim config repo if it doesn't exist
 ln -fs ~/.nvim-config ~/.config/nvim
+
+# function for pulling updates to .dotfiles
+function dotfiles_update {
+  echo "Pulling latest commits on main for dotfiles"
+  setup_repo "dotfiles" "$HOME/.dotfiles"
+}
