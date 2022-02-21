@@ -8,24 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Try my different usernames/platforms
-# I don't like this appraoch. Ideally, $ZSH would
-# simply be ~/.oh-my-zsh. However, this causes issues
-# when sourcing this file; it reports permission denied or
-# unable to find the directory.
-platform=$(uname)
-if [[ $platform == "Darwin" ]]; then
-  dirRoot="/Users"
-elif [[ $platform == "Linux" ]]; then
-  dirRoot="/home"
-fi
-if [[ -d "$dirRoot/krmckone" ]]; then
-  username="krmckone"
-elif [[ -d "$dirRoot/kalebmckone" ]]; then
-  username="kalebmckone"
-fi
-
-export ZSH="$dirRoot/$username/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
