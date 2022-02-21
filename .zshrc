@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Try my different usernames/platforms
-# I don't like this appraoch. Ideally, $ZSH would
+# I don't like this approach. Ideally, $ZSH would
 # simply be ~/.oh-my-zsh. However, this causes issues
 # when sourcing this file; it reports permission denied or
 # unable to find the directory.
