@@ -185,4 +185,5 @@ ln -fs ~/.nvim-config ~/.config/nvim
 function dotfiles_update {
   echo "Pulling latest commits on main for dotfiles"
   setup_repo "dotfiles" "$HOME/.dotfiles"
+  source ~/.zshrc
 }
