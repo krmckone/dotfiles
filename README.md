@@ -13,3 +13,4 @@ This will
 
 
 My `.zshrc` will install my [krm-helpers](https://github.com/krmckone/krm-helpers) and my [nvim-config](https://github.com/krmckone/nvim-config)
+and also keep them up to date.
