@@ -28,5 +28,7 @@ dotFiles=(
 
 for dotFile in ${dotFiles[@]}
 do
+  # Backup existing dotfile if it exists and is not a symlink
+  [[ -f $HOME/.$dotFile ]] && [ ! -L $HOME/.$dotFile ] && mv $HOME/.$dotFile $HOME/.$dotFile.bak
   ln -sf $DOTFILES_REPO/.$dotFile $HOME/.$dotFile
 done
