@@ -8,11 +8,17 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Try my different usernames
-if [[ -d "/Users/krmckone" ]]; then
-  export ZSH="/Users/krmckone/.oh-my-zsh"
-elif [[ -d "/Users/kalebmckone" ]]; then
-  export ZSH="/Users/kalebmckone/.oh-my-zsh"
+# Try my different usernames/platforms
+platform=$(uname)
+if [[ $platform == "Darwin" ]]; then
+  dirRoot="/Users"
+elif [[ $platform == "Linux" ]]; then
+  dirRoot="/home"
+fi
+if [[ -d "$dirRoot/krmckone" ]]; then
+  export ZSH="$dirRoot/krmckone/.oh-my-zsh"
+elif [[ -d "$dirRoot/kalebmckone" ]]; then
+  export ZSH="$dirRoot/kalebmckone/.oh-my-zsh"
 fi
 
 # Set name of the theme to load --- if set to "random", it will
