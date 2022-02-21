@@ -184,4 +184,4 @@ done
 NVIM_CONFIG_DIR="$HOME/.nvim-config"
 setup_repo "nvim-config" $NVIM_CONFIG_DIR
 # Setup symbolic link to my nvim config repo if it doesn't exist
-[ ! -d ~/.config/nvim ] && ln -s ~/.nvim-config ~/.config/nvim
+ln -fs ~/.nvim-config ~/.config/nvim
