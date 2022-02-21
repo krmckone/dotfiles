@@ -9,9 +9,9 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Try my different usernames
-if [[ -f "/Users/krmckone" ]]; then
+if [[ -d "/Users/krmckone" ]]; then
   export ZSH="/Users/krmckone/.oh-my-zsh"
-elif [[ -f "/Users/kalebmckone" ]]; then
+elif [[ -d "/Users/kalebmckone" ]]; then
   export ZSH="/Users/kalebmckone/.oh-my-zsh"
 fi
 
