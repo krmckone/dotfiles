@@ -8,20 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Try my different usernames/platforms
-platform=$(uname)
-if [[ $platform == "Darwin" ]]; then
-  dirRoot="/Users"
-elif [[ $platform == "Linux" ]]; then
-  dirRoot="/home"
-fi
-if [[ -d "$dirRoot/krmckone" ]]; then
-  username="krmckone"
-elif [[ -d "$dirRoot/kalebmckone" ]]; then
-  username="kalebmckone"
-fi
-
-export ZSH="$dirRoot/$username/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
