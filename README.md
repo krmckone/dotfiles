@@ -14,3 +14,5 @@ This will
 
 My `.zshrc` will install my [krm-helpers](https://github.com/krmckone/krm-helpers) and my [nvim-config](https://github.com/krmckone/nvim-config)
 and also keep them up to date.
+
+`.zshrc` exposes a function `dotfiles_update` that pulls latest from master.
