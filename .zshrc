@@ -187,7 +187,7 @@ ln -fs ~/.nvim-config ~/.config/nvim
 # function for pulling updates to .dotfiles
 function dotfiles_update {
   echo "Pulling latest commits on main for dotfiles"
-  setup_repo "dotfiles" "$HOME/.dotfiles"
+  setup_repo "dotfiles" "$HOME/.dotfiles" false
   # Restart the zsh process. This is favored over simply sourcing
   # the .zshrc file. https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
   exec zsh
