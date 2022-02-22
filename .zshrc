@@ -159,14 +159,17 @@ function setup_repo {
   local github_base="git@github.com:krmckone"
   readonly repo_name=${1:?"repo_name must be specified."}
   readonly target_path=${2:?"target_path must be specified."}
+  readonly quiet=${3:-true}
+  args=()
+  (( quiet == true )) && args+=( '--quiet' )
   if [ ! -d $target_path ]
   then
-      git clone $github_base/$repo_name.git $target_path --quiet
+      git clone $github_base/$repo_name.git $target_path "${args[@]}"
   fi
-  git -C $target_path checkout main --quiet && git -C $target_path fetch --quiet
+  git -C $target_path checkout main "${args[@]}" && git -C $target_path fetch "${args[@]}"
   if git -C $target_path status -uno | grep "Your branch is behind 'origin/main'" 1> /dev/null
   then
-    git -C $target_path pull --quiet
+    git -C $target_path pull "${args[@]}"
   fi
 }
 
@@ -185,5 +188,7 @@ ln -fs ~/.nvim-config ~/.config/nvim
 function dotfiles_update {
   echo "Pulling latest commits on main for dotfiles"
   setup_repo "dotfiles" "$HOME/.dotfiles"
-  source ~/.zshrc
+  # Restart the zsh process. This is favored over simply sourcing
+  # the .zshrc file. https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
+  exec zsh
 }
