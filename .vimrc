@@ -1,3 +1,9 @@
+" At some point I would like to have this entire configuration file
+" be stored in krmckone/.nvim-config. Right now that configuration is
+" sourcing this file as part of the nvim startup. I think it would be
+" much more clear/easier to maintain to have this configuration be stored
+" there in lua format.
+
 " Don't try to be vi compatible
 set nocompatible
 
