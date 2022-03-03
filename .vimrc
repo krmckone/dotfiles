@@ -129,3 +129,11 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+
+" https://stackoverflow.com/questions/6053301/easier-way-to-navigate-between-vim-split-panes
+" Use ctrl-[hjkl] to select the active split!
+" I like how simple this is.
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
