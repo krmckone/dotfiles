@@ -33,5 +33,3 @@ do
   [[ -f $HOME/.$dotFile ]] && [ ! -L $HOME/.$dotFile ] && mv $HOME/.$dotFile $HOME/.$dotFile.bak
   ln -sf $DOTFILES_REPO/.$dotFile $HOME/.$dotFile
 done
-
-exec zsh
