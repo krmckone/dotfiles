@@ -24,6 +24,7 @@ dotFiles=(
   "zshrc"
   "tmux.conf"
   "gitconfig"
+  "p10k.zsh"
 )
 
 for dotFile in ${dotFiles[@]}

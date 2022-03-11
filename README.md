@@ -16,3 +16,6 @@ My `.zshrc` will install my [krm-helpers](https://github.com/krmckone/krm-helper
 and also keep them up to date.
 
 `.zshrc` exposes a function `dotfiles_update` that pulls latest from master.
+
+To add a new dotfile, add it to the repo and append its name to the `dotFiles`
+array in `install.sh`
