@@ -6,34 +6,29 @@
 [pull]
 	rebase = false
 
+[diff]
+  tool = difftastic
+	external = difft
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+# Use a pager for large output, just like other git commands.
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+  difftool = true
 
-[interactive]
-    diffFilter = delta --color-only --features=interactive
+# `git dft` is less to type than `git difftool`.
+[alias]
+  dft = difftool
 
-[delta]
-    features = decorations
-    line-numbers = true
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
 [core]
   editor = nvim
-  pager = delta
 
 [merge]
   conflictstyle = diff3
 
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
