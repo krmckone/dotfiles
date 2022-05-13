@@ -103,8 +103,8 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
 " colorscheme solarized
@@ -120,9 +120,9 @@ set updatetime=100
 set laststatus=2
 
 " indentation stuff
-set autoindent
-set smartindent
-set pastetoggle=<F2>
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
 " enable folding and stuff
 set foldmethod=indent
