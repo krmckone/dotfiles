@@ -1,38 +1,25 @@
 [user]
 	name = Kaleb McKone
 	email = 20476319+krmckone@users.noreply.github.com
+
 [credential]
 	helper = osxkeychain
+
 [pull]
 	rebase = false
 
 [diff]
   colorMoved = default
-	external = difft
 
 [difftool]
   prompt = false
-
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
 
 # Use a pager for large output, just like other git commands.
 [pager]
   difftool = true
 
-# `git dft` is less to type than `git difftool`.
-[alias]
-  dft = difftool
-
 [core]
-  pager = delta
   editor = nvim
-
-[merge]
-  conflictstyle = diff3
 
 [interactive]
   diffFilter = delta --color-only
-
-[delta]
-  navigate = true  # use n and N to move between diff sections
