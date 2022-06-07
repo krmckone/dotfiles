@@ -187,10 +187,5 @@ function dotfiles_update {
   exec zsh
 }
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/kalebmckone/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT). ~/.tf/complete.zsh
-
 # oh my posh prompt theme
 eval "$(oh-my-posh init zsh)"
-
