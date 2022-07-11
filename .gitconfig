@@ -10,7 +10,7 @@
 
 [diff]
   colorMoved = default
-  external = difft
+	external = difft
 
 [difftool]
   prompt = false

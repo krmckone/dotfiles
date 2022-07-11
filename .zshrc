@@ -189,3 +189,7 @@ function dotfiles_update {
 
 # oh my posh prompt theme
 eval "$(oh-my-posh init zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/kalebmckone/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
