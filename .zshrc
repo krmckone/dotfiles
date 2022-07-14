@@ -193,3 +193,4 @@ eval "$(oh-my-posh init zsh)"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/kalebmckone/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+[ -f "/Users/kalebmckone/.ghcup/env" ] && source "/Users/kalebmckone/.ghcup/env" # ghcup-env
