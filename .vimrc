@@ -70,10 +70,6 @@ if exists('make')
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
 "" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -97,13 +93,6 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'eagletmt/neco-ghc'
 Plug 'dag/vim2hs'
 Plug 'pbrisbin/vim-syntax-shakespeare'
-
-
-" lua
-"" Lua Bundle
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-lua-inspect'
-
 
 " python
 "" Python Bundle
