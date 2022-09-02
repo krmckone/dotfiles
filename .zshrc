@@ -126,9 +126,6 @@ alias ls='ls -l'
 ########## OMZ DONE. BEGIN PERSONAL ADDITIONS #############
 ###########################################################
 
-# Set git diff tool for all repositories.
-git config --global diff.external difft
-
 # init zoxide (smart replacement for cd)
 eval "$(zoxide init zsh)"
 alias cd="z"

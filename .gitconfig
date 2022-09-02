@@ -7,20 +7,9 @@
 
 [pull]
 	rebase = false
-
-[diff]
-  colorMoved = default
-	external = difft
-
-[difftool]
-  prompt = false
-
 # Use a pager for large output, just like other git commands.
 [pager]
   difftool = true
 
 [core]
   editor = nvim
-
-[interactive]
-  diffFilter = delta --color-only
