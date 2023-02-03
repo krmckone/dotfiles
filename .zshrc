@@ -126,6 +126,8 @@ export NVM_DIR="$HOME/.nvm"
 ########## OMZ DONE. BEGIN PERSONAL ADDITIONS #############
 ###########################################################
 
+export PATH=$(go env GOPATH)/bin:$PATH
+
 # init zoxide (smart replacement for cd)
 eval "$(zoxide init zsh)"
 alias cd="z"
