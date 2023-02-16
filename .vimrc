@@ -37,6 +37,7 @@ endif
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
+" One day these should be moved to lua as much as possible
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
@@ -56,6 +57,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tomasr/molokai'
+
+" Git gutter update time
+set updatetime=100
 
 
 if isdirectory('/usr/local/opt/fzf')
