@@ -11,6 +11,11 @@ if [[ $machine == "Linux" ]]; then
   export PATH=$PATH:/usr/local/go/bin
 fi
 
+# Disable mouse accel on macos
+if [[ $machine == "Darwin" ]]; then
+  defaults write .GlobalPreferences com.apple.mouse.scaling -1
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -145,6 +150,7 @@ export PATH=$(go env GOPATH)/bin:$PATH
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+# TODO: Switch to HTTPS with PAT
 ### Allows us to interact with github over ssh without
 ### having to provide ssh passcode every time
 SSH_ENV=$HOME/.ssh/environment
@@ -167,6 +173,7 @@ else
     start_agent;
 fi
 
+# TODO: Switch to HTTPS with PAT
 # setup_repo <repo_name, target_path>
 function setup_repo {
   local github_base="git@github.com:krmckone"
@@ -205,22 +212,6 @@ function dotfiles_update {
   # the .zshrc file. https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
   exec zsh
 }
-
-[ -f "/Users/kalebmckone/.ghcup/env" ] && source "/Users/kalebmckone/.ghcup/env" # ghcup-env
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/kalebmckone/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/kalebmckone/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/kalebmckone/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/kalebmckone/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
