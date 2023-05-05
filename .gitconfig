@@ -3,15 +3,15 @@
 	email = 20476319+krmckone@users.noreply.github.com
 
 [credential]
-	helper = osxkeychain
+    helper = store
 
 [pull]
 	rebase = false
 # Use a pager for large output, just like other git commands.
 [pager]
-  difftool = true
+    difftool = true
 
 [core]
-  editor = nvim
+    editor = nvim
 [push]
 	autoSetupRemote = true
