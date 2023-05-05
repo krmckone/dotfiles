@@ -150,33 +150,9 @@ export PATH=$(go env GOPATH)/bin:$PATH
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# TODO: Switch to HTTPS with PAT
-### Allows us to interact with github over ssh without
-### having to provide ssh passcode every time
-SSH_ENV=$HOME/.ssh/environment
-# start the ssh-agent
-function start_agent {
-    echo "Initializing new SSH agent..."
-    # spawn ssh-agent
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
-    echo succeeded
-    chmod 600 ${SSH_ENV}
-    . ${SSH_ENV} > /dev/null
-    /usr/bin/ssh-add
-}
-if [ -f "${SSH_ENV}" ]; then
-     . ${SSH_ENV} > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
-
-# TODO: Switch to HTTPS with PAT
 # setup_repo <repo_name, target_path>
 function setup_repo {
-  local github_base="git@github.com:krmckone"
+  local github_base="https://github.com/krmckone"
   readonly repo_name=${1:?"repo_name must be specified."}
   readonly target_path=${2:?"target_path must be specified."}
   readonly quiet=${3:-true}
