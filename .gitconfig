@@ -3,7 +3,7 @@
 	email = 20476319+krmckone@users.noreply.github.com
 
 [credential]
-	helper = osxkeychain
+    helper = "if [[ $(uname) == 'Linux' ]]; then HELPER='store'; else HELPER='osxkeychain'; fi; $HELPER"
 
 [pull]
 	rebase = false
