@@ -1,5 +1,5 @@
 # setup_repo <repo_name, target_path>
-function setup_repo {
+setup_repo () {
   local github_base="git@github.com:krmckone"
   readonly repo_name=${1:?"repo_name must be specified."}
   readonly target_path=${2:?"target_path must be specified."}
@@ -19,18 +19,10 @@ DOTFILES_REPO="$HOME/.dotfiles"
 
 setup_repo "dotfiles" $DOTFILES_REPO
 
-dotFiles=(
-  "vimrc"
-  "zshrc"
-  "tmux.conf"
-  "gitconfig"
-  "p10k.zsh"
-  "spacemacs"
-)
-
-for dotFile in ${dotFiles[@]}
+# for dotFile in ${dotFiles[@]}
+for dotFile in vimrc zshrc tmux.conf gitconfig p10k.zsh spacemacs
 do
   # Backup existing dotfile if it exists and is not a symlink
-  [[ -f $HOME/.$dotFile ]] && [ ! -L $HOME/.$dotFile ] && mv $HOME/.$dotFile $HOME/.$dotFile.bak
+  [ -f $HOME/.$dotFile ] && [ ! -L $HOME/.$dotFile ] && mv $HOME/.$dotFile $HOME/.$dotFile.bak
   ln -sf $DOTFILES_REPO/.$dotFile $HOME/.$dotFile
 done
