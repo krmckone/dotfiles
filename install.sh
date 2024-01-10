@@ -27,6 +27,8 @@ do
   ln -sf $DOTFILES_REPO/.$dotFile $HOME/.$dotFile
 done
 
+# TODO: system link to alacritty's config location ~/.config/alacritty/alacritty.toml
+
 # Another version, originally in .zshrc. Removed to help with startup performance
 # setup_repo <repo_name, target_path>
 # function setup_repo {
